@@ -13,7 +13,7 @@ public class LambdaUtil {
      * @return a string supplier
      */
     public static Supplier<String> helloSupplier() {
-       return () -> "Hello World!";
+        return () -> "Hello World!";
     }
 
     /**
@@ -23,7 +23,7 @@ public class LambdaUtil {
      */
     public static Predicate<String> isEmptyPredicate() {
         return String::isEmpty;
-       // return str -> str.isEmpty();
+        // return str -> str.isEmpty();
     }
 
     /**
@@ -33,7 +33,11 @@ public class LambdaUtil {
      * @return function that repeats Strings
      */
     public static BiFunction<String, Integer, String> stringMultiplier() {
-        return (s, i) -> s + "*" + i;
+        return (str, n) -> {
+            StringBuilder result = new StringBuilder();
+            result.append(String.valueOf(str).repeat(Math.max(0, n)));
+            return result.toString();
+        };
     }
 
     /**
@@ -95,8 +99,8 @@ public class LambdaUtil {
      * @return binary sum operation
      */
     public static LongBinaryOperator longSumOperation() {
-        //todo
         return Long::sum;
+        //return (a,b) -> a + b;
     }
 
     /**
